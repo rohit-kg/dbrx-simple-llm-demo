@@ -12,6 +12,10 @@
 
 # COMMAND ----------
 
+volume_folder =  f"/Volumes/{catalog}/{db}/raw_document_landing_zone"
+
+# COMMAND ----------
+
 # Create workspace client
 from databricks.sdk import WorkspaceClient
 
@@ -50,6 +54,7 @@ from databricks.sdk.service.jobs import CreateJob
 job_config = {
     "run_as": {"user_name": email},
     "job_clusters": [job_cluster_dict],
+    "trigger": {"file_arrival": {"url": f'{volume_folder}'}},
     "tasks": [
         {
             "task_key": "01-Document-Ingestion-and-Index-Creation",
@@ -128,6 +133,7 @@ from databricks.sdk.service.jobs import Task, NotebookTask, Source, TaskDependen
 j = w.jobs.create(
     name=f"({username}) mfg_llm_demo",
     tasks=new_job.tasks,
+    trigger = new_job.trigger,
     git_source=new_job.git_source,
     job_clusters=new_job.job_clusters,
     parameters=new_job.parameters,
@@ -137,5 +143,5 @@ j = w.jobs.create(
 # COMMAND ----------
 
 # delete job
-# job_id = [i for i in w.jobs.list(name=f"({username}) mfg_llm_demo")][0].job_id
-# w.jobs.delete(job_id=job_id)
+job_id = [i for i in w.jobs.list(name=f"({username}) mfg_llm_demo")][0].job_id
+w.jobs.delete(job_id=job_id)
