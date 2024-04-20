@@ -12,7 +12,7 @@
 
 # COMMAND ----------
 
-volume_folder =  f"/Volumes/{catalog}/{db}/raw_document_landing_zone"
+volume_folder =  f"/Volumes/{catalog}/{db}/raw_document_landing_zone/"
 
 # COMMAND ----------
 
