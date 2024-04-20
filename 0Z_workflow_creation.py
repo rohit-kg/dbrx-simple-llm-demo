@@ -142,6 +142,10 @@ j = w.jobs.create(
 
 # COMMAND ----------
 
-# delete job
-job_id = [i for i in w.jobs.list(name=f"({username}) mfg_llm_demo")][0].job_id
-w.jobs.delete(job_id=job_id)
+# # delete job
+# job_id = [i for i in w.jobs.list(name=f"({username}) mfg_llm_demo")][0].job_id
+# w.jobs.delete(job_id=job_id)
+
+# COMMAND ----------
+
+
