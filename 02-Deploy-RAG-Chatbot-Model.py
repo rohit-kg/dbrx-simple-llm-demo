@@ -112,7 +112,7 @@ if skip_setup:
 # url used to send the request to your model from the serverless endpoint
 index_name=f"{catalog}.{db}.databricks_pdf_documentation_self_managed_vs_index"
 host = "https://" + spark.conf.get("spark.databricks.workspaceUrl")
-os.environ['DATABRICKS_TOKEN'] = dbutils.secrets.get("dbdemos", "rag_sp_token")
+os.environ['DATABRICKS_TOKEN'] = dbutils.secrets.get("andrew-kraemer", "rag_sp_token")
 
 # COMMAND ----------
 
@@ -278,7 +278,7 @@ endpoint_config = EndpointCoreConfigInput(
             workload_size=ServedModelInputWorkloadSize.SMALL,
             scale_to_zero_enabled=True,
             environment_vars={
-                "DATABRICKS_TOKEN": "{{secrets/dbdemos/rag_sp_token}}",  # <scope>/<secret> that contains an access token
+                "DATABRICKS_TOKEN": "{{secrets/andrew-kraemer/rag_sp_token}}",  # <scope>/<secret> that contains an access token
             }
         )
     ]

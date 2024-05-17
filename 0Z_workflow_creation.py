@@ -29,6 +29,8 @@ elif w.clusters.get(cluster_id).azure_attributes is not None:
     cluster_type = "Standard_E4d_v4"
 else:
     print("Could not determine cloud type based on this cluster. Make sure you're running with a regular cluster, not a serverless one")
+
+cluster_type = "i3.xlarge"
     
 job_cluster_dict = {
     "job_cluster_key": "Job_cluster",
